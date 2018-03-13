@@ -3,6 +3,7 @@ import './Dishes.css';
 // Alternative to passing the moderl as the component property, 
 // we can import the model instance directly
 import {modelInstance} from '../data/DinnerModel';
+import { Link } from 'react-router-dom';
 
 
 class Dishes extends Component {
@@ -45,7 +46,13 @@ class Dishes extends Component {
         break;
       case 'LOADED':
         dishesList = this.state.dishes.map((dish) =>
-          <li key={dish.id}>{dish.title}</li>
+          <Link onClick={ () => modelInstance.setActiveDish(dish)} to="/details" key={dish.id}>
+            <div className="dishWindow">
+              <h4>{dish.title}</h4>
+              <img alt="" src={"https://spoonacular.com/recipeImages/" + dish.image}/>
+            </div>
+          </Link>
+
         )
         break;
       default:
@@ -56,9 +63,7 @@ class Dishes extends Component {
     return (
       <div className="Dishes">
         <h3>Dishes</h3>
-        <ul>
-          {dishesList}
-        </ul>
+        {dishesList}
       </div>
     );
   }

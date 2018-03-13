@@ -1,11 +1,20 @@
 const httpOptions = {
-  headers: {'X-Mashape-Key': 'YOUR_API_KEY'}
+  headers: {'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'}
 };
 
 const DinnerModel = function () {
 
   let numberOfGuests = 4;
   let observers = [];
+  let activeDish = {title: "Hello"};
+
+  this.setActiveDish = function (dish) {
+    activeDish = dish;
+  };
+
+  this.getActiveDish = function () {
+    return activeDish;
+  };
 
   this.setNumberOfGuests = function (num) {
     numberOfGuests = num;
@@ -20,6 +29,13 @@ const DinnerModel = function () {
 
   this.getAllDishes = function () {
     const url = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search'
+    return fetch(url, httpOptions)
+      .then(processResponse)
+      .catch(handleError)
+  }
+
+  this.getDishDetails = function() {
+    const url = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/479101/information'
     return fetch(url, httpOptions)
       .then(processResponse)
       .catch(handleError)
@@ -43,6 +59,7 @@ const DinnerModel = function () {
       console.error('getAllDishes() API Error:', error.message || error)
     }
   }
+
 
   // Observer pattern
 

@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import Welcome from './Welcome/Welcome';
 import { modelInstance } from './data/DinnerModel'
 import SelectDish from "./SelectDish/SelectDish";
+import Details from "./Details/Details";
 
 class App extends Component {
   constructor(props) {
@@ -18,12 +19,14 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">{this.state.title}</h1>
-          
-          {/* We rended diffrent component based on the path */}
-          <Route exact path="/" component={Welcome}/>
-          <Route path="/search" render={() => <SelectDish model={modelInstance}/>}/>
-        
         </header>
+
+        {/* We rended diffrent component based on the path */}
+        <Route exact path="/" component={Welcome}/>
+        <Route path="/search" render={() => <SelectDish model={modelInstance} />} />
+        <Route path="/details" render={() => <Details model={modelInstance} />} />
+        
+        
       </div>
     );
   }

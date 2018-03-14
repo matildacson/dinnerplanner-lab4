@@ -1,14 +1,26 @@
-.Dishes {
-width: 100%;
+.Ingredients {
+
+max-width:800px;
+min-width: 320px;
 background-color: #FFF;
-display: block;
 margin-left: 10px;
+padding: 20px;
 }
 
-.dishWindow{
-width: 100px;
+.heading{
+width:100%;
 }
 
-.dishWindow img{
-width: 100px;
+.col-sm-6 {
+width: 50%;
+display: inline-block;
+vertical-align: top;
+}
+
+.col{
+padding: 10px;
+}
+
+.dishImg img{
+width: 100%;
 }

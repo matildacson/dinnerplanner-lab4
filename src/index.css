@@ -4,18 +4,3 @@ background-image: url('/images/tomatoes.jpg');
 background-repeat: no-repeat;
 background-attachment: fixed;
 }
-
-.App-header{
-width: 100%;
-background: #000;
-opacity: 0.8;
-padding-top:10px;
-padding-bottom: 10px;
-text-align: center;
-}
-
-.App-title{
-font-family: Futura;
-font-weight: normal;
-color: #FFF;
-}

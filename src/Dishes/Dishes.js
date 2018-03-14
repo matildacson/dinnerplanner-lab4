@@ -47,9 +47,9 @@ class Dishes extends Component {
       case 'LOADED':
         dishesList = this.state.dishes.map((dish) =>
           <Link onClick={ () => modelInstance.setActiveDish(dish)} to="/details" key={dish.id}>
-            <div className="dishWindow">
-              <h4>{dish.title}</h4>
-              <img alt="" src={"https://spoonacular.com/recipeImages/" + dish.image}/>
+            <div className="dishItemDiv">
+              <div className="dishImgDiv"><img alt="" src={"https://spoonacular.com/recipeImages/" + dish.image}/></div>
+              <div className="dishTitle">{dish.title}</div>
             </div>
           </Link>
 
@@ -62,8 +62,8 @@ class Dishes extends Component {
 
     return (
       <div className="Dishes">
-        <h3>Dishes</h3>
-        {dishesList}
+        <div className="heading">Dishes</div>
+        <div className="dishItems">{dishesList}</div>
       </div>
     );
   }

@@ -1,0 +1,33 @@
+.App{
+margin:0px;
+}
+
+.App-content{
+margin-top: 80px;
+margin-right: 20px;
+margin-left: 20px;
+margin-bottom: 80px;
+max-width:;
+display: flex;
+
+
+}
+
+.App-header{
+width: 100%;
+background: #000;
+opacity: 0.8;
+margin-top: 0px;
+padding-bottom: 5px;
+padding-top: 5px;
+text-align: center;
+position: fixed;
+top: 0px;
+}
+
+.App-title{
+font-family: Futura;
+font-weight: normal;
+color: #FFF;
+font-size: 20px;
+}

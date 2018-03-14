@@ -6,7 +6,10 @@ const DinnerModel = function () {
 
   let numberOfGuests = 4;
   let observers = [];
-  let activeDish = {title: "Hello"};
+  let activeDish = "";
+  let selectedDishes = [];
+  let selectedDishesDetails = [];
+
 
   this.setActiveDish = function (dish) {
     activeDish = dish;
@@ -14,6 +17,14 @@ const DinnerModel = function () {
 
   this.getActiveDish = function () {
     return activeDish;
+  };
+
+  this.getSelectedDishes = function () {
+    return selectedDishes;
+  };
+
+  this.getSelectedDishesDetails = function () {
+    return selectedDishesDetails;
   };
 
   this.setNumberOfGuests = function (num) {
@@ -34,11 +45,29 @@ const DinnerModel = function () {
       .catch(handleError)
   }
 
-  this.getDishDetails = function() {
-    const url = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/479101/information'
+  this.getDishDetails = function(id) {
+    const url = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/'+id+'/information'
     return fetch(url, httpOptions)
       .then(processResponse)
-      .catch(handleError)
+      .catch(handleErrorTwo)
+  }
+
+  this.addDishToMenu = function(dish) {
+    let details = this.getDishDetails(dish.id);
+    selectedDishesDetails.push(details);
+    selectedDishes.push(dish);
+    notifyObservers();
+  }
+
+  //Removes dish from menu
+  this.removeDishFromMenu = function(id) {
+    for(var i = 0; i < selectedDishes.length; i++) {
+      if(selectedDishes[i].id === id){
+        selectedDishes.splice(i, 1);
+        selectedDishesDetails.splice(i, 1);
+        notifyObservers();
+      }
+    }
   }
   
   // API Helper methods
@@ -57,6 +86,16 @@ const DinnerModel = function () {
       })
     } else {
       console.error('getAllDishes() API Error:', error.message || error)
+    }
+  }
+
+  const handleErrorTwo = function (error) {
+    if (error.json) {
+      error.json().then(error => {
+        console.error('getDishDetails() API Error:', error.message || error)
+      })
+    } else {
+      console.error('getDishDetails() API Error:', error.message || error)
     }
   }
 

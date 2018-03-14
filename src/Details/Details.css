@@ -1,14 +1,6 @@
-.Dishes {
-width: 100%;
-background-color: #FFF;
-display: block;
-margin-left: 10px;
-}
-
-.dishWindow{
-width: 100px;
-}
-
-.dishWindow img{
-width: 100px;
-}
+.Details{
+display: flex;
+margin: 0px auto;
+background-color: none;
+left: 50%;
+};

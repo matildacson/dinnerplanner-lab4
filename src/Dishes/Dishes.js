@@ -11,8 +11,12 @@ class Dishes extends Component {
     super(props);
     // We create the state to store the various statuses
     // e.g. API data loading or error 
+    this.handleDropdownChange = this.handleDropdownChange.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
     this.state = {
-      status: 'INITIAL'
+      status: 'INITIAL',
+      type: '',
+      searchValue: ''
     }
   }
 
@@ -22,7 +26,33 @@ class Dishes extends Component {
   componentDidMount = () => {
     // when data is retrieved we update the state
     // this will cause the component to re-render
-    modelInstance.getAllDishes().then(dishes => {
+    modelInstance.getAllDishes(this.state.type, this.state.searchValue).then(dishes => {
+      this.setState({
+        status: 'LOADED',
+        dishes: dishes.results
+      })
+    }).catch(() => {
+      this.setState({
+        status: 'ERROR'
+      })
+    })
+  }
+
+  handleDropdownChange(e) {
+    this.setState({type: e.target.value
+    })
+    this.update()
+  }
+
+  handleInputChange(e) {
+    this.setState({searchValue: e.target.value
+    })
+    this.update()
+  }
+
+  update() {
+    this.state.status = 'INITIAL';
+    modelInstance.getAllDishes(this.state.type, this.state.searchValue).then(dishes => {
       this.setState({
         status: 'LOADED',
         dishes: dishes.results
@@ -36,7 +66,6 @@ class Dishes extends Component {
 
   render() {
     let dishesList = null;
-    
     // depending on the state we either generate
     // useful message to the user or show the list
     // of returned dishes
@@ -63,6 +92,23 @@ class Dishes extends Component {
     return (
       <div className="Dishes">
         <div className="heading">Dishes</div>
+        <div className="searchBar">
+          <input onChange={this.handleInputChange} id="searchForDish" placeholder="Search for a dish..."/>
+          <select onChange={this.handleDropdownChange} id="searchDishType">
+            <option value="">All dishes</option>
+            <option value="Appetizer">Appetizer</option>
+            <option value="Main Course">Main Course</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Salad">Salad</option>
+            <option value="Side Dish">Side Dish</option>
+            <option value="Bread">Bread</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Soup">Soup</option>
+            <option value="Beverage">Beverage</option>
+            <option value="Sauce">Sauce</option>
+            <option value="Drink">Drink</option>
+          </select>
+        </div>
         <div className="dishItems">{dishesList}</div>
       </div>
     );

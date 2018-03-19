@@ -44,12 +44,14 @@ class Ingredients extends Component {
   render() {
     let price = null;
     let ingredientsList = null;
+    let preparation = null;
     switch (this.state.status) {
       case 'INITIAL':
         ingredientsList = <tr><td>Loading..</td></tr>
         break;
       case 'LOADED':
         price = this.state.price;
+        preparation = this.state.ingredients.instructions;
         ingredientsList = this.state.ingredients.extendedIngredients.map((ingredient) =>
           <tr key={ingredient.id}>
             <td>{ingredient.amount*this.props.model.getNumberOfGuests()}</td>
@@ -73,7 +75,7 @@ class Ingredients extends Component {
               <button className="primary-btn">Go back to search</button>
             </Link>
             <div className="dishImg"><img alt="" src={"https://spoonacular.com/recipeImages/" + this.state.activeDish.image } /></div>
-            <div className="dishPreparation">Här ska det stå en förklaringstext och om den är för lång så kommer det inte se bra ut så det borde jag fixa.</div>
+            <div className="dishPreparation">{preparation}</div>
           </div>
         </div>
         <div className="col-sm-6">

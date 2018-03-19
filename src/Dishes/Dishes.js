@@ -39,19 +39,20 @@ class Dishes extends Component {
   }
 
   handleDropdownChange(e) {
-    this.setState({type: e.target.value
-    })
-    this.update()
+    this.state.type = e.target.value;
+    this.setState({
+      status: 'INITIAL',
+    }, this.update())
   }
 
   handleInputChange(e) {
-    this.setState({searchValue: e.target.value
-    })
-    this.update()
+    this.state.status = 'INITIAL';
+    this.setState({
+      status: 'INITIAL',
+    }, this.update())
   }
 
   update() {
-    this.state.status = 'INITIAL';
     modelInstance.getAllDishes(this.state.type, this.state.searchValue).then(dishes => {
       this.setState({
         status: 'LOADED',

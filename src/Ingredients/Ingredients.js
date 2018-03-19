@@ -86,7 +86,7 @@ class Ingredients extends Component {
                 </tbody>
               </table>
               <div className="totalPrice">Total price: {price*this.state.numberOfGuests}</div>
-              <Link onClick={ () => this.props.model.addDishToMenu(this.state.activeDish)} to="/search">
+              <Link onClick={ () => this.props.model.addDishToMenu(this.state.activeDish, this.state.ingredients)} to="/search">
                 <button className="primary-btn">Add to menu</button>
               </Link>
             </div>

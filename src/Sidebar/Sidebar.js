@@ -42,8 +42,17 @@ class Sidebar extends Component {
   }
 
   render() {
-  
+
+    console.log(this.props.model.getDishesAndDetails());
+    let selectedDishes = this.props.model.getDishesAndDetails().map((dish) =>
+      <tr key={dish.key.id}>
+        <td className="buttontd"><button onClick={ () => this.props.model.removeDishFromMenu(dish.key.id)}>x</button></td>
+        <td>{dish.key.title}</td>
+        <td className="pricetd">{dish.details.pricePerServing}</td>
+      </tr>
+    )
     
+    /*
     let selectedDishes = this.state.menu.map((dish) =>
       <tr key={dish.id}>
         <td className="buttontd"><button onClick={ () => this.props.model.removeDishFromMenu(dish.id)}>x</button></td>
@@ -51,6 +60,7 @@ class Sidebar extends Component {
         <td className="pricetd">100 kr</td>
       </tr>
     )
+    */
 
     return (
       <div className="Sidebar">

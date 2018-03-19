@@ -1,4 +1,4 @@
-const httpOptions = {
+const httpOptions = { 
   headers: {'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'}
 };
 
@@ -36,6 +36,18 @@ const DinnerModel = function () {
     return numberOfGuests;
   };
 
+  this.getDishesAndDetails = function() {
+    let result = [];
+    for (var i = 0; i < selectedDishes.length; i++) {
+      result.push({
+        "key" : selectedDishes[i],
+        "details" : selectedDishesDetails[i]
+      });
+    }
+    return result;
+  }
+
+
   // API Calls
 
   this.getAllDishes = function () {
@@ -52,11 +64,13 @@ const DinnerModel = function () {
       .catch(handleErrorTwo)
   }
 
-  this.addDishToMenu = function(dish) {
-    let details = this.getDishDetails(dish.id);
-    selectedDishesDetails.push(details);
-    selectedDishes.push(dish);
-    notifyObservers();
+  this.addDishToMenu = function(dish, ingredients) {
+    if (!selectedDishes.some(d => d.id == dish.id)) {
+      selectedDishesDetails.push(ingredients);
+      selectedDishes.push(dish);
+      notifyObservers();
+    }
+    
   }
 
   //Removes dish from menu

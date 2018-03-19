@@ -5,7 +5,6 @@ import './Dishes.css';
 import {modelInstance} from '../data/DinnerModel';
 import { Link } from 'react-router-dom';
 
-
 class Dishes extends Component {
   constructor(props) {
     super(props);
@@ -26,6 +25,9 @@ class Dishes extends Component {
   componentDidMount = () => {
     // when data is retrieved we update the state
     // this will cause the component to re-render
+
+    this.timer = null;
+
     modelInstance.getAllDishes(this.state.type, this.state.searchValue).then(dishes => {
       this.setState({
         status: 'LOADED',
@@ -46,10 +48,15 @@ class Dishes extends Component {
   }
 
   handleInputChange(e) {
-    this.state.status = 'INITIAL';
+
+    clearTimeout(this.timer);
+
+    this.state.searchValue = e.target.value;
     this.setState({
       status: 'INITIAL',
-    }, this.update())
+    })
+
+    this.timer = setTimeout(() => this.update(), 400);
   }
 
   update() {
@@ -75,16 +82,25 @@ class Dishes extends Component {
         dishesList = <em>Loading...</em>
         break;
       case 'LOADED':
-        dishesList = this.state.dishes.map((dish) =>
+
+        if (this.state.dishes.length == 0) {
+          dishesList = <em>No matches.</em>
+        }
+
+        else {
+          dishesList = this.state.dishes.map((dish) =>
           <Link onClick={ () => modelInstance.setActiveDish(dish)} to="/details" key={dish.id}>
             <div className="dishItemDiv">
               <div className="dishImgDiv"><img alt="" src={"https://spoonacular.com/recipeImages/" + dish.image}/></div>
               <div className="dishTitle">{dish.title}</div>
             </div>
           </Link>
-
         )
+        }
+        
         break;
+      case 'ERROR':
+        dishesList = <em>Error!</em>
       default:
         dishesList = <b>Failed to load data, please try again</b>
         break;

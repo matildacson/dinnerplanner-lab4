@@ -6,26 +6,30 @@ const DinnerModel = function () {
 
   let numberOfGuests = 4;
   let observers = [];
-  let activeDish = "";
+  //let activeDish = "";
   let selectedDishes = [];
-  let selectedDishesDetails = [];
+  //let selectedDishesDetails = [];
 
 
+  /*
   this.setActiveDish = function (dish) {
     activeDish = dish;
   };
-
+  
   this.getActiveDish = function () {
     return activeDish;
   };
+  */
 
   this.getSelectedDishes = function () {
     return selectedDishes;
   };
 
+  /*
   this.getSelectedDishesDetails = function () {
     return selectedDishesDetails;
   };
+  */
 
   this.setNumberOfGuests = function (num) {
     if(num === parseInt(num, 10)){
@@ -39,6 +43,7 @@ const DinnerModel = function () {
     return numberOfGuests;
   };
 
+  /*
   this.getDishesAndDetails = function() {
     let result = [];
     for (var i = 0; i < selectedDishes.length; i++) {
@@ -49,6 +54,7 @@ const DinnerModel = function () {
     }
     return result;
   }
+  */
 
 
   // API Calls
@@ -67,9 +73,8 @@ const DinnerModel = function () {
       .catch(handleErrorTwo)
   }
 
-  this.addDishToMenu = function(dish, ingredients) {
+  this.addDishToMenu = function(dish) {
     if (!selectedDishes.some(d => d.id == dish.id)) {
-      selectedDishesDetails.push(ingredients);
       selectedDishes.push(dish);
       notifyObservers();
     }
@@ -81,7 +86,6 @@ const DinnerModel = function () {
     for(var i = 0; i < selectedDishes.length; i++) {
       if(selectedDishes[i].id === id){
         selectedDishes.splice(i, 1);
-        selectedDishesDetails.splice(i, 1);
         notifyObservers();
       }
     }

@@ -9,8 +9,7 @@ class Sidebar extends Component {
     // we put on state the properties we want to use and modify in the component
     this.state = {
       numberOfGuests: this.props.model.getNumberOfGuests(),
-      menu: this.props.model.getSelectedDishes(),
-      details: this.props.model.getSelectedDishesDetails()
+      menu: this.props.model.getSelectedDishes()
     }
   }
 
@@ -43,12 +42,11 @@ class Sidebar extends Component {
 
   render() {
 
-    console.log(this.props.model.getDishesAndDetails());
-    let selectedDishes = this.props.model.getDishesAndDetails().map((dish) =>
-      <tr key={dish.key.id}>
-        <td className="buttontd"><button onClick={ () => this.props.model.removeDishFromMenu(dish.key.id)}>x</button></td>
-        <td>{dish.key.title}</td>
-        <td className="pricetd">{Math.round(dish.details.pricePerServing*this.state.numberOfGuests)}</td>
+    let selectedDishes = this.state.menu.map((dish) =>
+      <tr key={dish.id}>
+        <td className="buttontd"><button onClick={ () => this.props.model.removeDishFromMenu(dish.id)}>x</button></td>
+        <td>{dish.title}</td>
+        <td className="pricetd">{Math.round(dish.pricePerServing*this.state.numberOfGuests)}</td>
       </tr>
     )
     

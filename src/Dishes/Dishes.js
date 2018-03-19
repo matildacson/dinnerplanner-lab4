@@ -89,7 +89,7 @@ class Dishes extends Component {
 
         else {
           dishesList = this.state.dishes.map((dish) =>
-          <Link onClick={ () => modelInstance.setActiveDish(dish)} to="/details" key={dish.id}>
+          <Link to={`/details/${dish.id}`} key={dish.id}>
             <div className="dishItemDiv">
               <div className="dishImgDiv"><img alt="" src={"https://spoonacular.com/recipeImages/" + dish.image}/></div>
               <div className="dishTitle">{dish.title}</div>

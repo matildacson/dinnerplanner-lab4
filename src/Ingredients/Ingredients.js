@@ -22,7 +22,7 @@ class Ingredients extends Component {
     this.props.model.getDishDetails(this.state.activeDish.id).then(ingredients => {
       this.setState({
         status: 'LOADED',
-        ingredients: ingredients.extendedIngredients,
+        ingredients: ingredients,
         price: ingredients.pricePerServing
 
       })
@@ -42,20 +42,22 @@ class Ingredients extends Component {
 
 
   render() {
-    let price = this.state.price;
+    let price = null;
     let ingredientsList = null;
     switch (this.state.status) {
       case 'INITIAL':
         ingredientsList = <tr><td>Loading..</td></tr>
         break;
       case 'LOADED':
-        ingredientsList = this.state.ingredients.map((ingredient) =>
+        price = this.state.price;
+        ingredientsList = this.state.ingredients.extendedIngredients.map((ingredient) =>
           <tr key={ingredient.id}>
             <td>{ingredient.amount*this.props.model.getNumberOfGuests()}</td>
             <td>{ingredient.unit}</td>
             <td>{ingredient.name}</td>
           </tr>
         )
+        
         break;
       default:
         ingredientsList = <tr><td>Failed to load data, please try again</td></tr>

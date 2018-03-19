@@ -9,7 +9,8 @@ class Sidebar extends Component {
     // we put on state the properties we want to use and modify in the component
     this.state = {
       numberOfGuests: this.props.model.getNumberOfGuests(),
-      menu: this.props.model.getSelectedDishes()
+      menu: this.props.model.getSelectedDishes(),
+      details: this.props.model.getSelectedDishesDetails()
     }
   }
 
@@ -34,13 +35,15 @@ class Sidebar extends Component {
       menu: this.props.model.getSelectedDishes(),
     })
   }
+
   // our handler for the input's on change event
   onNumberOfGuestsChanged = (e) => {
     this.props.model.setNumberOfGuests(+e.target.value)
   }
 
   render() {
-
+  
+    
     let selectedDishes = this.state.menu.map((dish) =>
       <tr key={dish.id}>
         <td className="buttontd"><button onClick={ () => this.props.model.removeDishFromMenu(dish.id)}>x</button></td>

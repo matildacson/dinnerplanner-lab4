@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import './Overview.css';
+import './Print.css';
 import { Link } from 'react-router-dom';
-import Print from '../Print/Print';
 
-class Overview extends Component {
+class Print extends Component {
 
   constructor(props) {
     super(props)
@@ -44,20 +43,20 @@ class Overview extends Component {
   render() {
 
     let selectedDishes = this.state.menu.map((dish) =>
-      <div className="dishItemDiv">
-        <div className="dishImgDiv"><img alt="" src={dish.image}/></div>
-        <div className="dishTitle">{dish.title}</div>
+      <div className="row">
+        <div className="col-sm-6"><img alt="" src={dish.image}/>{dish.title}</div>
+        <div className="col-sm-6">{dish.instructions}</div>
       </div>
     )
 
     return (
-      <div className="Overview">
+      <div className="Print">
         <div className="heading">Dinner for {this.state.numberOfGuests} guests</div>
         <div className="buttons">
           <Link to="/search">
             <button className="primary-btn">Go back to edit menu</button>
           </Link>
-          <Link to="/print">
+          <Link to="/search">
             <button className="primary-btn">Print full recipe</button>
           </Link>
         </div>
@@ -69,4 +68,4 @@ class Overview extends Component {
   }
 }
 
-export default Overview;
+export default Print;

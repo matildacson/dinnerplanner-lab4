@@ -60,6 +60,7 @@ class Ingredients extends Component {
   render() {
     
     let price = null;
+    let content = null;
     let ingredientsList = null;
     let preparation = null;
     let title = null;
@@ -67,7 +68,7 @@ class Ingredients extends Component {
   
     switch (this.state.status) {
       case 'INITIAL':
-        //ingredientsList = <tr><td>Loading..</td></tr>
+        content = <img src={image}/>;
         break;
       case 'LOADED':
         price = this.state.price;
@@ -81,6 +82,42 @@ class Ingredients extends Component {
             <td>{ingredient.name}</td>
           </tr>
         )
+        content = 
+        <div>
+          <div className="row">
+            <div className="heading">{title}</div>
+          </div>
+          <div className="row">
+            <div className="col-sm-6">
+              <Link to="/search">
+                <button className="primary-btn">Go back to search</button>
+              </Link>
+              <div className="dishImg"><img alt="" src={image} /></div>
+              <div className="dishPreparation"><p>{preparation}</p></div>
+              <div className="row">
+                <div className="col-xs-1"><FacebookShareButton url={window.location.href}><FacebookIcon size="32" round="true"/></FacebookShareButton></div>
+                <div className="col-xs-1"><TwitterShareButton url={window.location.href}><TwitterIcon size="32" round="true"/></TwitterShareButton></div>
+                <div className="col-xs-1"><PinterestShareButton url={window.location.href}><PinterestIcon size="32" round="true"/></PinterestShareButton></div>
+                <div className="col-xs-1"><RedditShareButton url={window.location.href}><RedditIcon size="32" round="true"/></RedditShareButton></div>
+                <div className="col-xs-1"><TumblrShareButton url={window.location.href}><TumblrIcon size="32" round="true"/></TumblrShareButton></div>
+              </div>
+            </div>
+            <div className="col-sm-6">
+              <div className="ingredientsList">
+                <div className="heading">Ingredients for {this.state.numberOfGuests} guests</div>
+                <table id="ingredientTable">
+                  <tbody>
+                   {ingredientsList}
+                  </tbody>
+                </table>
+                <div className="totalPrice">Total price: ${Math.round(price*this.state.numberOfGuests)/100}</div>
+                <Link onClick={ () => this.props.model.addDishToMenu(this.state.ingredients)} to="/search">
+                  <button className="primary-btn">Add to menu</button>
+                </Link>
+              </div>
+            </div>
+          </div>
+         </div>;
         
         break;
       default:
@@ -90,39 +127,7 @@ class Ingredients extends Component {
 
     return (
       <div className="Ingredients">
-        <div className="row">
-          <div className="heading">{title}</div>
-        </div>
-        <div className="row">
-          <div className="col-sm-6">
-            <Link to="/search">
-              <button className="primary-btn">Go back to search</button>
-            </Link>
-            <div className="dishImg"><img alt="" src={image} /></div>
-            <div className="dishPreparation"><p>{preparation}</p></div>
-            <div className="socialMedias">
-              <FacebookShareButton url={window.location.href}><FacebookIcon size="32" round="true"/></FacebookShareButton>
-              <TwitterShareButton url={window.location.href}><TwitterIcon size="32" round="true"/></TwitterShareButton>
-              <PinterestShareButton url={window.location.href}><PinterestIcon size="32" round="true"/></PinterestShareButton>
-              <RedditShareButton url={window.location.href}><RedditIcon size="32" round="true"/></RedditShareButton>
-              <TumblrShareButton url={window.location.href}><TumblrIcon size="32" round="true"/></TumblrShareButton>
-            </div>
-          </div>
-          <div className="col-sm-6">
-            <div className="ingredientsList">
-              <div className="heading">Ingredients for {this.state.numberOfGuests} guests</div>
-              <table id="ingredientTable">
-                <tbody>
-                 {ingredientsList}
-                </tbody>
-              </table>
-              <div className="totalPrice">Total price: ${Math.round(price*this.state.numberOfGuests)/100}</div>
-              <Link onClick={ () => this.props.model.addDishToMenu(this.state.ingredients)} to="/search">
-                <button className="primary-btn">Add to menu</button>
-              </Link>
-            </div>
-          </div>
-        </div>
+        {content}
       </div>
 
     );

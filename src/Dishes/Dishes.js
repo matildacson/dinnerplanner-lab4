@@ -13,6 +13,7 @@ class Dishes extends Component {
     // e.g. API data loading or error 
     this.handleDropdownChange = this.handleDropdownChange.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
+    this.refresh = this.refresh.bind(this)
     this.state = {
       status: 'INITIAL',
       type: '',
@@ -20,15 +21,7 @@ class Dishes extends Component {
     }
   }
 
-  // this methods is called by React lifecycle when the 
-  // component is actually shown to the user (mounted to DOM)
-  // that's a good place to call the API and get the data
-  componentDidMount = () => {
-    // when data is retrieved we update the state
-    // this will cause the component to re-render
-
-    this.timer = null;
-
+  refresh() {
     modelInstance.getAllDishes(this.state.type, this.state.searchValue).then(dishes => {
       this.setState({
         status: 'LOADED',
@@ -41,11 +34,22 @@ class Dishes extends Component {
     })
   }
 
+  // this methods is called by React lifecycle when the 
+  // component is actually shown to the user (mounted to DOM)
+  // that's a good place to call the API and get the data
+  componentDidMount = () => {
+    // when data is retrieved we update the state
+    // this will cause the component to re-render
+
+    this.timer = null;
+    this.refresh();
+  }
+
   handleDropdownChange(e) {
-    this.state.type = e.target.value;
     this.setState({
       status: 'INITIAL',
-    }, this.update())
+      type: e.target.value
+    }, this.update)
   }
 
   handleInputChange(e) {
@@ -60,7 +64,7 @@ class Dishes extends Component {
     this.timer = setTimeout(() => this.update(), 400);
   }
 
-  update() {
+  refresh() {
     modelInstance.getAllDishes(this.state.type, this.state.searchValue).then(dishes => {
       this.setState({
         status: 'LOADED',

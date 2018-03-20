@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 import './Ingredients.css';
 import { Link } from 'react-router-dom';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  PinterestShareButton,
+  RedditShareButton,
+  TumblrShareButton,
+} from 'react-share';
+import {
+  FacebookIcon,
+  TwitterIcon,
+  PinterestIcon,
+  RedditIcon,
+  TumblrIcon,
+} from 'react-share';
 
 class Ingredients extends Component {
 
@@ -86,6 +100,13 @@ class Ingredients extends Component {
             </Link>
             <div className="dishImg"><img alt="" src={image} /></div>
             <div className="dishPreparation"><p>{preparation}</p></div>
+            <div className="socialMedias">
+              <FacebookShareButton url={window.location.href}><FacebookIcon size="32" round="true"/></FacebookShareButton>
+              <TwitterShareButton url={window.location.href}><TwitterIcon size="32" round="true"/></TwitterShareButton>
+              <PinterestShareButton url={window.location.href}><PinterestIcon size="32" round="true"/></PinterestShareButton>
+              <RedditShareButton url={window.location.href}><RedditIcon size="32" round="true"/></RedditShareButton>
+              <TumblrShareButton url={window.location.href}><TumblrIcon size="32" round="true"/></TumblrShareButton>
+            </div>
           </div>
           <div className="col-sm-6">
             <div className="ingredientsList">

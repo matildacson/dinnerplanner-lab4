@@ -12,7 +12,7 @@ class Ingredients extends Component {
 
     this.state = {
       status: 'INITIAL',
-      activeDish: window.location.href.slice(-5), 
+      activeDish: window.location.href.substr(window.location.href.lastIndexOf('/') + 1), 
       numberOfGuests: this.props.model.getNumberOfGuests()
    //   activeIngredients: this.props.model.getDishDetails({this.state.activeDish.id})
     }

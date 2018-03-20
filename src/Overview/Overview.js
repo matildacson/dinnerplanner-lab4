@@ -44,7 +44,7 @@ class Overview extends Component {
 
     let selectedDishes = this.state.menu.map((dish) =>
       <div className="dishItemDiv">
-        <div className="dishImgDiv"><img alt="" src={"https://spoonacular.com/recipeImages/" + dish.image}/></div>
+        <div className="dishImgDiv"><img alt="" src={dish.image}/></div>
         <div className="dishTitle">{dish.title}</div>
       </div>
     )

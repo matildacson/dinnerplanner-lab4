@@ -10,9 +10,18 @@ text-align: center;
 width: 10px;
 }
 .buttontd button{
-background-color: red;
-border:1px solid red;
+border: 0px solid red;
 border-radius: 10px;
+}
+
+.buttontd button img{
+transition: all .1s ease-in-out;
+width: 10px;
+}
+
+.buttontd button img:hover{
+transform: scale(1.2);
+color: red;
 }
 
 .pricetd{

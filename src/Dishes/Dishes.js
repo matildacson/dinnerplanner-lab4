@@ -109,25 +109,30 @@ class Dishes extends Component {
 
     return (
       <div className="Dishes">
-        <div className="heading">Dishes</div>
-        <div id="searchBar">
-          <input onChange={this.handleInputChange} id="searchForDish" placeholder="Search for a dish..."/>
-          <select onChange={this.handleDropdownChange} id="searchDishType">
-            <option value="">All dishes</option>
-            <option value="Appetizer">Appetizer</option>
-            <option value="Main Course">Main Course</option>
-            <option value="Dessert">Dessert</option>
-            <option value="Salad">Salad</option>
-            <option value="Side Dish">Side Dish</option>
-            <option value="Bread">Bread</option>
-            <option value="Breakfast">Breakfast</option>
-            <option value="Soup">Soup</option>
-            <option value="Beverage">Beverage</option>
-            <option value="Sauce">Sauce</option>
-            <option value="Drink">Drink</option>
-          </select>
+        <div className="row">
+          <div className="heading">Dishes</div>
+        </div>
+        <div className="row">
+          <div id="searchBar">
+            <input onChange={this.handleInputChange} id="searchForDish" placeholder="Search for a dish..."/>
+            <select onChange={this.handleDropdownChange} id="searchDishType">
+              <option value="">All dishes</option>
+              <option value="Appetizer">Appetizer</option>
+              <option value="Main Course">Main Course</option>
+              <option value="Dessert">Dessert</option>
+              <option value="Salad">Salad</option>
+              <option value="Side Dish">Side Dish</option>
+              <option value="Bread">Bread</option>
+              <option value="Breakfast">Breakfast</option>
+              <option value="Soup">Soup</option>
+              <option value="Beverage">Beverage</option>
+              <option value="Sauce">Sauce</option>
+              <option value="Drink">Drink</option>
+            </select>
+          </div>
         </div>
         <div className="dishItems">{dishesList}</div>
+        
       </div>
     );
   }

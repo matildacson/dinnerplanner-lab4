@@ -72,6 +72,14 @@ const DinnerModel = function () {
       }
     }
   }
+
+  this.getTotalMenuPrice = function() {
+      let totalCost = 0;
+      for(var i = 0; i < selectedDishes.length; i++) {
+        totalCost += selectedDishes[i].pricePerServing;
+      } 
+      return totalCost*this.getNumberOfGuests();   
+  }
   
   // API Helper methods
 
@@ -101,6 +109,8 @@ const DinnerModel = function () {
       console.error('getDishDetails() API Error:', error.message || error)
     }
   }
+
+
 
 
   // Observer pattern

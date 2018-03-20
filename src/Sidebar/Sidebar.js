@@ -45,7 +45,7 @@ class Sidebar extends Component {
     console.log(this.state.menu);
     let selectedDishes = this.state.menu.map((dish) =>
       <tr key={dish.id}>
-        <td className="buttontd"><button onClick={ () => this.props.model.removeDishFromMenu(dish.id)}>x</button></td>
+        <td className="buttontd"><button onClick={ () => this.props.model.removeDishFromMenu(dish.id)}><img src='/images/remove-symbol.png'/></button></td>
         <td>{dish.title}</td>
         <td className="pricetd">{Math.round(dish.pricePerServing*this.state.numberOfGuests)/100} $</td>
       </tr>
@@ -56,14 +56,12 @@ class Sidebar extends Component {
         <div className="heading">My dinner</div>
         <p className="chooseNumberOfGuests">
         How many guests? <br/><input value={this.state.numberOfGuests} onChange={this.onNumberOfGuestsChanged}/>
-        <br/>
-        <br/>
-        Menu:</p> 
+        </p>
         <table><tbody>{selectedDishes}</tbody></table>
+        <div className="totalPrice">Total price: ${Math.round(this.props.model.getTotalMenuPrice())/100}</div>
         <Link to="/overview">
           <button className="ordinaryButton">Create menu</button>
         </Link>
-        
       </div>
     );
   }

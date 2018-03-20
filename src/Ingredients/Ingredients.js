@@ -95,7 +95,7 @@ class Ingredients extends Component {
                  {ingredientsList}
                 </tbody>
               </table>
-              <div className="totalPrice">Total price: {Math.round(price*this.state.numberOfGuests)/100} $</div>
+              <div className="totalPrice">Total price: ${Math.round(price*this.state.numberOfGuests)/100}</div>
               <Link onClick={ () => this.props.model.addDishToMenu(this.state.ingredients)} to="/search">
                 <button className="primary-btn">Add to menu</button>
               </Link>

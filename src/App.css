@@ -3,12 +3,12 @@ margin:0px;
 }
 
 .App-content{
-margin-top: 80px;
-margin-right: 100px;
-margin-left: 100px;
-margin-bottom: 80px;
-align-items: center;
-display: block;
+background: none;
+margin-top: 50px;
+margin-bottom: 20px;
+padding-left: 100px;
+padding-right: 100px;
+padding-bottom:30px;
 }
 
 .App-header{
@@ -28,4 +28,8 @@ font-family: Futura;
 font-weight: normal;
 color: #FFF;
 font-size: 20px;
+}
+
+.col-sm-3, .col-sm-9{
+padding: 5px;
 }

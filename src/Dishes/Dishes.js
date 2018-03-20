@@ -109,7 +109,7 @@ class Dishes extends Component {
     return (
       <div className="Dishes">
         <div className="heading">Dishes</div>
-        <div className="searchBar">
+        <div id="searchBar">
           <input onChange={this.handleInputChange} id="searchForDish" placeholder="Search for a dish..."/>
           <select onChange={this.handleDropdownChange} id="searchDishType">
             <option value="">All dishes</option>

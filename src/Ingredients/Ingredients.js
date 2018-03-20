@@ -62,7 +62,7 @@ class Ingredients extends Component {
         image = this.state.ingredients.image;
         ingredientsList = this.state.ingredients.extendedIngredients.map((ingredient) =>
           <tr key={ingredient.id}>
-            <td>{ingredient.amount*this.props.model.getNumberOfGuests()}</td>
+            <td>{Math.round(ingredient.amount*this.props.model.getNumberOfGuests()*100)/100}</td>
             <td>{ingredient.unit}</td>
             <td>{ingredient.name}</td>
           </tr>
@@ -76,18 +76,18 @@ class Ingredients extends Component {
 
     return (
       <div className="Ingredients">
-        <div className="col-sm-6">
-          <div className="col">
-            <div className="heading">{title}</div>
+        <div className="row">
+          <div className="heading">{title}</div>
+        </div>
+        <div className="row">
+          <div className="col-sm-6">
             <Link to="/search">
               <button className="primary-btn">Go back to search</button>
             </Link>
             <div className="dishImg"><img alt="" src={image} /></div>
-            <div className="dishPreparation">{preparation}</div>
+            <div className="dishPreparation"><p>{preparation}</p></div>
           </div>
-        </div>
-        <div className="col-sm-6">
-          <div className="col">
+          <div className="col-sm-6">
             <div className="ingredientsList">
               <div className="heading">Ingredients for {this.state.numberOfGuests} guests</div>
               <table id="ingredientTable">
@@ -95,7 +95,7 @@ class Ingredients extends Component {
                  {ingredientsList}
                 </tbody>
               </table>
-              <div className="totalPrice">Total price: {price*this.state.numberOfGuests}</div>
+              <div className="totalPrice">Total price: {Math.round(price*this.state.numberOfGuests)/100} $</div>
               <Link onClick={ () => this.props.model.addDishToMenu(this.state.ingredients)} to="/search">
                 <button className="primary-btn">Add to menu</button>
               </Link>

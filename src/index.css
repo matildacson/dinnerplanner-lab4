@@ -4,3 +4,31 @@ background-image: url('/images/tomatoes.jpg');
 background-repeat: no-repeat;
 background-attachment: fixed;
 }
+
+p {
+font-family: Futura;
+font-size: 14px;
+}
+
+table{
+font-family: Futura;
+font-size: 14px;
+width: 100%;
+}
+
+.ordinaryButton{
+background-color: #663333;
+color: #FFF;
+font-family: Futura;
+text-align: center;
+padding: 5px 20px 5px 20px;
+border: 0px;
+border-radius: 5px;
+}
+
+.heading {
+font-family: Futura;
+font-size: 20px;
+padding: 20px;
+color: #663333;
+}

@@ -6,12 +6,12 @@ class Welcome extends Component {
   render() {
     return (
       <div className="Welcome">
-        <p>
-            Welcome to the dinner planner React Startup code!
-        </p>
-        
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam nibh. 
+        Nunc varius facilisis eros. Sed erat. In in velit quis arcu ornare laoreet. 
+        Curabitur adipiscing luctus massa. Integer ut purus ac augue commodo commodo. 
+        Nunc nec mi eu justo tempor consectetuer.<br/></p>
         <Link to="/search">
-            <button>Start planning</button>
+          <button id="beginButton" type="button" class="ordinaryButton">Create Dinner</button>
         </Link>
       </div>
     );

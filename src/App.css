@@ -4,13 +4,11 @@ margin:0px;
 
 .App-content{
 margin-top: 80px;
-margin-right: 20px;
-margin-left: 20px;
+margin-right: 100px;
+margin-left: 100px;
 margin-bottom: 80px;
-max-width:;
-display: flex;
-
-
+align-items: center;
+display: block;
 }
 
 .App-header{

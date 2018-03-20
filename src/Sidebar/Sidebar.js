@@ -46,7 +46,7 @@ class Sidebar extends Component {
       <tr key={dish.id}>
         <td className="buttontd"><button onClick={ () => this.props.model.removeDishFromMenu(dish.id)}>x</button></td>
         <td>{dish.title}</td>
-        <td className="pricetd">{Math.round(dish.pricePerServing*this.state.numberOfGuests)}</td>
+        <td className="pricetd">{Math.round(dish.pricePerServing*this.state.numberOfGuests)/100} $</td>
       </tr>
     )
     
@@ -70,7 +70,7 @@ class Sidebar extends Component {
         Menu:</p> 
         <table><tbody>{selectedDishes}</tbody></table>
         <Link to="/overview">
-          <button className="primary-btn">Create menu</button>
+          <button className="ordinaryButton">Create menu</button>
         </Link>
         
       </div>

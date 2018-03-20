@@ -1,26 +1,19 @@
 .Ingredients {
-
-max-width:800px;
-min-width: 320px;
 background-color: #FFF;
 margin-left: 10px;
 padding: 20px;
 }
 
-.heading{
-width:100%;
-}
-
-.col-sm-6 {
-width: 50%;
-display: inline-block;
-vertical-align: top;
-}
-
-.col{
-padding: 10px;
-}
-
 .dishImg img{
 width: 100%;
+border: 0px;
+border-radius: 10px;
+}
+
+.totalPrice{
+margin-top: 10px;
+text-align: center;
+border-top: 1px solid #000;
+font-family: Futura;
+padding: 10px;
 }

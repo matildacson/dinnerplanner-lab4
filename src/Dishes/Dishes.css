@@ -1,11 +1,35 @@
 .Dishes {
-width: 100%;
 background-color: #FFF;
-margin-left: 10px;
 padding: 20px;
-min-width: 320px;
-max-width: 800px;
+width: 100%;
+}
 
+#searchBar{
+padding:10px;
+margin-bottom: 10px;
+background: #f2f2f2;
+border: 0px;
+border-radius: 5px;
+}
+
+#searchBar input{
+width: 200px;
+padding: 5px;
+display: inline-block;
+border: 0px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+margin-right: 10px;
+font-family: Futura;
+}
+
+#searchDishType{
+background: #fff;
+height: 30px;
+overflow: hidden;
+border: 0px;
+font-family: futura;
+margin-right: 10px; 
 }
 
 .dishItems{
@@ -40,10 +64,4 @@ font-family: Futura;
 font-size: 14px;
 text-align: center;
 padding-right: 5px;
-}
-
-.heading{
-font-size: 18px;
-font-family: Futura;
-padding: 5px;
 }

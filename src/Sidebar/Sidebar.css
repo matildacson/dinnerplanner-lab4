@@ -1,29 +1,9 @@
 .Sidebar{
 background-color: #FFF;
-width: 320px;
-min-width: 240px;
-height: auto;
-display: block;
-padding:20px;
+padding: 10px;
 font-family: Futura;
 font-size: 14px;
 text-align: center;
-}
-
-.primary-btn{
-border:0px;
-background-color: red;
-border-radius: 5px;
-font-family: Futura;
-font-size: 14px;
-color: #FFF;
-padding:5px 20px 5px 20px;
-margin:20px;
-}
-
-.heading{
-font-size: 18px;
-font-family: Futura;
 }
 
 .buttontd{
@@ -36,7 +16,7 @@ border-radius: 10px;
 }
 
 .pricetd{
-width: 45px;
+white-space: nowrap;
 text-align: right
 }
 

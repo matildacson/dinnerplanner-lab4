@@ -12,7 +12,7 @@ class Ingredients extends Component {
 
     this.state = {
       status: 'INITIAL',
-      activeDish: window.location.href.slice(-5), 
+      activeDish: window.location.href.substr(window.location.href.lastIndexOf('/') + 1), 
       numberOfGuests: this.props.model.getNumberOfGuests()
    //   activeIngredients: this.props.model.getDishDetails({this.state.activeDish.id})
     }
@@ -49,11 +49,11 @@ class Ingredients extends Component {
     let ingredientsList = null;
     let preparation = null;
     let title = null;
-    let image = null;
+    let image = "https://the-oak.co.uk/images/loading/loading.gif";
   
     switch (this.state.status) {
       case 'INITIAL':
-        ingredientsList = <tr><td>Loading..</td></tr>
+        //ingredientsList = <tr><td>Loading..</td></tr>
         break;
       case 'LOADED':
         price = this.state.price;

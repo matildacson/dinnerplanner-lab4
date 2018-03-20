@@ -4,57 +4,37 @@ const httpOptions = {
 
 const DinnerModel = function () {
 
-  let numberOfGuests = 4;
-  let observers = [];
-  //let activeDish = "";
-  let selectedDishes = [];
-  //let selectedDishesDetails = [];
+  let numberOfGuests = localStorage.getItem("numGuests");
+  if (numberOfGuests == null) {
+    numberOfGuests = 4;
+  }
 
-
-  /*
-  this.setActiveDish = function (dish) {
-    activeDish = dish;
-  };
+  //localStorage.clear();
   
-  this.getActiveDish = function () {
-    return activeDish;
-  };
-  */
+  let selectedDishes = JSON.parse(localStorage.getItem("selDishes"));
+  if (selectedDishes == null) {
+    selectedDishes = [];
+  }
+
+  let observers = [];
+
 
   this.getSelectedDishes = function () {
     return selectedDishes;
   };
 
-  /*
-  this.getSelectedDishesDetails = function () {
-    return selectedDishesDetails;
-  };
-  */
-
   this.setNumberOfGuests = function (num) {
     if(num === parseInt(num, 10)){
       numberOfGuests = num;
       notifyObservers();
-
+      localStorage.setItem("numGuests", numberOfGuests);
     }
+
   };
 
   this.getNumberOfGuests = function () {
     return numberOfGuests;
   };
-
-  /*
-  this.getDishesAndDetails = function() {
-    let result = [];
-    for (var i = 0; i < selectedDishes.length; i++) {
-      result.push({
-        "key" : selectedDishes[i],
-        "details" : selectedDishesDetails[i]
-      });
-    }
-    return result;
-  }
-  */
 
 
   // API Calls
@@ -77,6 +57,7 @@ const DinnerModel = function () {
     if (!selectedDishes.some(d => d.id == dish.id)) {
       selectedDishes.push(dish);
       notifyObservers();
+      localStorage.setItem("selDishes", JSON.stringify(selectedDishes));
     }
     
   }
@@ -87,6 +68,7 @@ const DinnerModel = function () {
       if(selectedDishes[i].id === id){
         selectedDishes.splice(i, 1);
         notifyObservers();
+        localStorage.setItem("selDishes", JSON.stringify(selectedDishes));
       }
     }
   }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Dishes.css';
+//import logo from 'https://people.kth.se/~davidtra/';
 // Alternative to passing the moderl as the component property, 
 // we can import the model instance directly
 import {modelInstance} from '../data/DinnerModel';
@@ -79,7 +80,7 @@ class Dishes extends Component {
     // of returned dishes
     switch (this.state.status) {
       case 'INITIAL':
-        dishesList = <em>Loading...</em>
+        dishesList = <img src={"https://the-oak.co.uk/images/loading/loading.gif"}/>
         break;
       case 'LOADED':
 

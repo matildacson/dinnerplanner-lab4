@@ -79,7 +79,9 @@ class Dishes extends Component {
     // of returned dishes
     switch (this.state.status) {
       case 'INITIAL':
+        
         dishesList = <em>Loading...</em>
+        
         break;
       case 'LOADED':
 
